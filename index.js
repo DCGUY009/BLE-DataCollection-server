@@ -13,7 +13,7 @@ app.route("/example")
     })
     .post((req, res) => {
         console.log(req.body);
-        res.status(200).json(res.body);
+        res.status(200).send(res.body);
     });
 
 // setting of port for server to listen
