@@ -21,6 +21,12 @@ app.route("/example")
         res.status(200).json(req.body);
     });
 
+app.route("/cleardata").get((req, res) => {
+    postResult = [];
+    count = 0;
+    res.status(200).json({ data: postResult, count: count });
+});
+
 // setting of port for server to listen
 const PORT = process.env.PORT || 3030;
 app.listen(PORT, () => {
