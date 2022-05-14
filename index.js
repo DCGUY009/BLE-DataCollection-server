@@ -7,15 +7,17 @@ const app = express();
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 
-let postResult = {};
+let postResult = [],
+    count = 0;
 
 app.route("/example")
     .get((req, res) => {
-        res.status(200).json(postResult);
+        res.status(200).json({ data: postResult, count: count });
     })
     .post((req, res) => {
+        count += 1;
         console.log(req.body);
-        postResult = req.body;
+        postResult.push(req.body);
         res.status(200).json(req.body);
     });
 
